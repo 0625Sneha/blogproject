@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note-Taking </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #2575fc;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+/* 
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffdd57;
+        } */
+        /* Center Menu Items */
+        .menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .menu li {
+            margin: 0 20px;
+        }
+
+        .menu li a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Animation Effect on Hover */
+        .menu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 3px;
+            background: #ffcc00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+            transform-origin: left;
+        }
+
+        .menu li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Main Section Styling */
+        main {
+            flex: 1;
+            padding: 20px;
+            /* max-width: 100px; */
+            height: 400px;
+            width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #1d5ed8;
+        }
+
+        .notes-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .note-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #e63939;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #2575fc;
+            color: white;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-blog"></i> WebBlog
+            </a>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <h1>Note-Taking </h1>
+        <textarea id="noteInput" placeholder="Write your note here..."></textarea>
+        <button id="addNoteBtn">Add Note</button>
+        <ul class="notes-list" id="notesList"></ul>
+    </main>
+
+    <!-- Footer Section -->
+    <!-- <footer>
+        <p>Note-Taking App - Built with ❤️</p>
+    </footer> -->
+
+    <script>
+    // Select elements
+const noteInput = document.getElementById('noteInput');
+const addNoteBtn = document.getElementById('addNoteBtn');
+const notesList = document.getElementById('notesList');
+
+// Load notes from localStorage
+const loadNotes = () => {
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    notes.forEach(addNoteToDOM); // Add notes from storage to the DOM
+};
+
+// Save notes to localStorage
+const saveNotes = () => {
+    const notes = Array.from(document.querySelectorAll('.note-item .note-text')).map(
+        item => item.textContent
+    );
+    localStorage.setItem('notes', JSON.stringify(notes));
+};
+
+// Add note to DOM
+const addNoteToDOM = (note) => {
+    const li = document.createElement('li');
+    li.classList.add('note-item');
+    li.innerHTML = `
+        <span class="note-text">${note}</span>
+        <button class="delete-btn">Delete</button>
+    `;
+    notesList.appendChild(li);
+    updateIndexes();
+};
+
+// Update the `data-index` attribute for all delete buttons
+const updateIndexes = () => {
+    Array.from(notesList.children).forEach((note, index) => {
+        note.querySelector('.delete-btn').setAttribute('data-index', index);
+    });
+};
+
+// Add a new note
+const addNote = () => {
+    const noteText = noteInput.value.trim();
+    if (noteText) {
+        addNoteToDOM(noteText);
+        noteInput.value = '';
+        saveNotes();
+    }
+};
+
+// Delete a note
+const deleteNote = (index) => {
+    const note = notesList.children[index];
+    if (note) {
+        note.remove();
+        saveNotes();
+        updateIndexes();
+    }
+};
+
+// Event listeners
+addNoteBtn.addEventListener('click', addNote);
+notesList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        const index = parseInt(e.target.dataset.index, 10);
+        deleteNote(index);
+    }
+});
+
+// Initialize the app
+loadNotes();
+    </script>
+</body>
+</html>

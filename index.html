@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="script.js"> -->
+    <script src="script.js"></script>
+    
+</head>
+<body>
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar">
+          <!-- Logo and Icon -->
+          <div class="logo">
+              <i class="fas fa-blog logo-icon"></i>
+              <a href="#" class="logo-text">WebBlog</a>
+          </div>
+  
+          <!-- Center Menu -->
+          <ul class="menu" id="menu">
+              <li><a href="#home">Home</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">About <i class="fas fa-angle-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="notetaking.html">Note-Taking</a></li>
+                    <li><a href="texteditor.html">Text-Edittor</a></li>
+                </ul>
+            </li>            
+              <li><a href="#topics">Topics</a></li>
+              <li><a href="#featured-post">Featured post</a></li>
+              <li><a href="#recentpost">Recent Post</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+  
+          <!-- Buttons -->
+          <div class="buttons">
+              <button id="signin-btn"><a href="signin.html">Sign In</a></button>
+              <button id="signup-btn"><a href="signup.html">Sign Up</a></button>
+          </div>
+  
+          <!-- Mobile Menu Toggle -->
+          <div class="menu-toggle" id="menu-toggle">
+              ☰
+          </div>
+      </nav>
+  
+    </header>
+
+    <main>
+        <div class="section_top" id="home">
+        <div class="imageSlider">
+            <h1 class="textcontent">Welcome to WebBlog</h1>
+            <button><a href="https://www.youtube.com/@MayapurTVOfficial" target="_blank">Subscribe</a></button>
+        </div>
+    </div>
+        <!-- <section class="blog">
+            <div class="layer">
+                <h3>Latest blog</h3>
+                <p class="text">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia id sequi asperiores modi illo, eveniet ut facere provident quo aliquam?
+                </p>
+                
+            </div>
+        </section> -->
+
+        <!-- image slider  -->
+        
+    <div class="container" id="topics">
+        <h2 class="hot-topics-title" >Hot Topics</h2>
+        <div class="slider-wrapper">
+            <!-- Previous Button with Icon -->
+            <button id="prev-slide" class="slider-button material-symbols-rounded">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            
+            <!-- Image List -->
+            <div class="image-list">
+              <!-- Image Item 1 -->
+              <div class="image-item-container">
+                  <img src="images/12.webp" alt="Meditation" class="image-item">
+                  <p class="image-name-overlay">Meditation</p>
+              </div>
+              <!-- Image Item 2 -->
+              <div class="image-item-container">
+                  <img src="images/14.jpg" alt="Travel" class="image-item">
+                  <p class="image-name-overlay">Travel</p>
+              </div>
+              <!-- Image Item 3 -->
+              <div class="image-item-container">
+                  <img src="images/place2.jpeg" alt="Spiritual Place" class="image-item">
+                  <p class="image-name-overlay">Spiritual Place</p>
+              </div>
+              <!-- Image Item 4 -->
+              <div class="image-item-container">
+                  <img src="images/29.jpg" alt="Festivals" class="image-item">
+                  <p class="image-name-overlay">Festivals</p>
+              </div>
+              <!-- Image Item 5 -->
+              <div class="image-item-container">
+                  <img src="images/15.jpg" alt="Prasadam" class="image-item">
+                  <p class="image-name-overlay">Prasad</p>
+              </div>
+              <!-- Image Item 6 -->
+              <div class="image-item-container">
+                  <img src="images/13.jpg" alt="Nature" class="image-item">
+                  <p class="image-name-overlay">Nature</p>
+              </div>
+              <!-- Image Item 7 -->
+              <div class="image-item-container">
+                  <img src="images/book1.webp" alt="Spiritual Books" class="image-item">
+                  <p class="image-name-overlay">Spiritual Books</p>
+              </div>
+              <!-- Image Item 8 -->
+              <div class="image-item-container">
+                  <img src="images/20.webp" alt="Flowers" class="image-item">
+                  <p class="image-name-overlay">Flowers</p>
+              </div>
+              <!-- Add more images as needed -->
+          </div>
+          
+            <!-- <div class="image-list">
+                <img src="images/12.webp" alt="Image 1" class="image-item"><span class="topic-name">Travel</span>
+                <img src="images/11.jpg" alt="Image 2" class="image-item">
+                <img src="images/5.avif" alt="Image 3" class="image-item">
+                <img src="images/17.jpg" alt="Image 4" class="image-item">
+                <img src="images/18.jpg" alt="Image 5" class="image-item">
+                <img src="images/19.webp" alt="Image 6" class="image-item">
+                <img src="images/20.webp" alt="Image 7" class="image-item">
+                <img src="images/26.jpg" alt="Image 8" class="image-item">
+                <img src="images/22.jpg" alt="Image 9" class="image-item">
+                <img src="images/23.jpg" alt="Image 10" class="image-item">
+            </div> -->
+    
+            <!-- Next Button with Icon -->
+            <button id="next-slide" class="slider-button material-symbols-rounded">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    
+        <!-- Scrollbar -->
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
+    </div>
+
+        <!-- blog card -->
+         
+<div class="main">
+    <!-- blog-card -->
+<div class="main">
+    <div class="editor-picked-container" id="featured-post">
+        <h2 >Editor Picked</h2>
+      </div>
+    
+      <!-- Blog Cards -->
+      <div class="main">
+        <div class="blog-card">
+          <img src="images/place2.jpeg" alt="Image 1">
+          <div class="blog-content">
+            <h2>Blog Post 1</h2>
+            <p>This is a short description of the first blog post.</p>
+            <a href="blog1.html" class="read-more" target="_blank" >Read More</a>
+          </div>
+        </div>
+      
+        <div class="blog-card">
+          <img src="images/place4.jpg" alt="Image 2">
+          <div class="blog-content">
+            <h2>Blog Post 2</h2>
+            <p>This is a short description of the second blog post.</p>
+            <a href="blog2.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+      
+        <div class="blog-card">
+          <img src="images/place3.avif" alt="Image 3">
+          <div class="blog-content">
+            <h2>Blog Post 3</h2>
+            <p>This is a short description of the third blog post.</p>
+            <a href="blog3.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+    
+        <div class="blog-card">
+          <img src="images/24.jpg" alt="Image 4">
+          <div class="blog-content">
+            <h2>Blog Post 4</h2>
+            <p>This is a short description of the fourth blog post.</p>
+            <a href="blog4.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+      
+        <div class="blog-card">
+          <img src="images/26.jpg" alt="Image 5">
+          <div class="blog-content">
+            <h2>Blog Post 5</h2>
+            <p>This is a short description of the fifth blog post.</p>
+            <a href="blog5.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+      
+        <div class="blog-card">
+          <img src="images/30.jpg" alt="Image 6">
+          <div class="blog-content">
+            <h2>Blog Post 6</h2>
+            <p>This is a short description of the sixth blog post.</p>
+            <a href="blog6.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+      
+        <div class="blog-card">
+          <img src="images/food1.jpg" alt="Image 5">
+          <div class="blog-content">
+            <h2>Blog Post 7</h2>
+            <p>This is a short description of the seventh blog post.</p>
+            <a href="blog7.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="images/15.jpg" alt="Image 5">
+          <div class="blog-content">
+            <h2>Blog Post 8</h2>
+            <p>This is a short description of the eight blog post.</p>
+            <a href="blog8.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <img src="images/food2.jpg" alt="Image 5">
+          <div class="blog-content">
+            <h2>Blog Post 9</h2>
+            <p>This is a short description of the nineth blog post.</p>
+            <a href="blog9.html" class="read-more" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="recent-post-heading" id="recentpost">Recent Post</h1>
+      
+</div>
+
+
+    
+  <!-- recent post -->
+  
+
+
+  <!-- Section 1 -->
+  <div class="section">
+    <div class="text" >
+      <h1>This is heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum magnam at culpa! Quod nisi perspiciatis dignissimos at vero, voluptates sint soluta assumenda dolor officiis quaerat atque non nesciunt reprehenderit nulla enim neque illum quo. Unde odit nihil eum eaque. Culpa iste quia accusantium iusto unde minima aperiam distinctio pariatur.</p>
+    </div>
+    <img src="images/1.avif" alt="Image 1">
+  </div>
+  
+  <!-- Section 2 -->
+  <div class="section reverse">
+    <div class="text">
+      <h1>This is heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum magnam at culpa! Quod nisi perspiciatis dignissimos at vero, voluptates sint soluta assumenda dolor officiis quaerat atque non nesciunt reprehenderit nulla enim neque illum quo. Unde odit nihil eum eaque. Culpa iste quia accusantium iusto unde minima aperiam distinctio pariatur.</p>
+    </div>
+    <img src="images/2.avif" alt="Image 2">
+  </div>
+  
+  <!-- Section 3 -->
+  <div class="section">
+    <div class="text">
+      <h1>This is heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum magnam at culpa! Quod nisi perspiciatis dignissimos at vero, voluptates sint soluta assumenda dolor officiis quaerat atque non nesciunt reprehenderit nulla enim neque illum quo. Unde odit nihil eum eaque. Culpa iste quia accusantium iusto unde minima aperiam distinctio pariatur.</p>
+    </div>
+    <img src="images/3.avif" alt="Image 3">
+  </div>
+  
+  <!-- Section 4 -->
+  <div class="section reverse">
+    <div class="text">
+      <h1>This is heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione eum magnam at culpa! Quod nisi perspiciatis dignissimos at vero, voluptates sint soluta assumenda dolor officiis quaerat atque non nesciunt reprehenderit nulla enim neque illum quo. Unde odit nihil eum eaque. Culpa iste quia accusantium iusto unde minima aperiam distinctio pariatur.</p>
+    </div>
+    <img src="images/4.avif" alt="Image 4">
+  </div>
+  
+    </main>
+    <!-- footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus quisquam minus quo illo numquam vel incidunt pariatur hic commodi expedita tempora praesentium at iure fugiat ea, quam laborum aperiam veritatis.</p>
+                <ul class="sci">
+                    <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
+                    <li><a href="#"><i class="bx bxl-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="sec quicklinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                </ul>
+            </div>
+            <div class="sec contactBx">
+                <h2>Contact Info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class='bx bxs-map'></i></span>
+                        <span>04 park street <br> kolkata <br> WB</span>
+                    </li>
+                    <li>
+                        <span><i class='bx bx-envelope' ></i></span>
+                        <p><a href="mailto:webblog8@gmail.com">webblog8@gmail.com</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+       
+    </footer>
+    <div class="copyright">
+        <p>&copy; 2025 Web Blog. All rights reserved.</p> 
+    </div>
+
+</body>
+</html>

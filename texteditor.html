@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header and Navbar Styling */
+        header {
+            background-color: #2575fc;
+            color: white;
+            width: 100%;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+/* 
+        .menu {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex: 1; /* Center the menu items */
+            /* gap: 20px;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffdd57;
+        } */ 
+        /* Center Menu Items */
+        .menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .menu li {
+            margin: 0 20px;
+        }
+
+        .menu li a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Animation Effect on Hover */
+        .menu li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 3px;
+            background: #ffcc00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+            transform-origin: left;
+        }
+
+        .menu li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                display: none;
+                background-color: #2575fc;
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .navbar {
+                position: relative;
+            }
+        }
+
+        .heading{
+               margin-top: 20px; /* Added space at the top */
+               /* margin-bottom: 30px; */
+
+        }
+        /* Editor Container Styling */
+        .editor-container {
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Toolbar styles */
+        .toolbar {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .toolbar button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-right: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toolbar button:hover {
+            background-color: #6a11cb;
+        }
+
+        /* Editor text area styles */
+        .editor {
+            border: 2px solid #ddd;
+            min-height: 300px;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            outline: none;
+            overflow-y: auto;
+        }
+
+        .editor:focus {
+            border-color: #2575fc;
+        }
+
+        /* Editor actions (Save and Reset buttons) */
+        .editor-actions {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .editor-actions button {
+            background-color: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .editor-actions button:hover {
+            background-color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Left-aligned Logo -->
+            <div class="logo">
+                <i class="fas fa-blog logo-icon"></i>
+                <a href="index.html" class="logo-text">WebBlog</a>
+            </div>
+
+            <!-- Center-aligned Menu -->
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#featured-post">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2 class="heading">Welcome to WebBlog Text Editor</h2>
+    <div class="editor-container">
+        
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <button onclick="formatText('bold')"><b>B</b></button>
+            <button onclick="formatText('italic')"><i>I</i></button>
+            <button onclick="formatText('underline')"><u>U</u></button>
+            <button onclick="changeColor()">Color</button>
+            <button onclick="createLink()">Link</button>
+        </div>
+
+        <!-- Text Area for Content -->
+        <div contenteditable="true" class="editor" id="editor">
+            <p>Start typing your blog content here...</p>
+        </div>
+
+        <!-- Save and Reset buttons -->
+        <div class="editor-actions">
+            <button onclick="saveContent()">Save</button>
+            <button onclick="resetContent()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to apply text formatting (Bold, Italic, Underline)
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        // Function to change text color
+        function changeColor() {
+            const color = prompt("Enter a color (e.g., red, blue, #ff5733):");
+            document.execCommand('foreColor', false, color);
+        }
+
+        // Function to add a link
+        function createLink() {
+            const url = prompt("Enter the URL:");
+            if (url) {
+                document.execCommand('createLink', false, url);
+            }
+        }
+
+        // Function to save the content
+        function saveContent() {
+            const content = document.getElementById('editor').innerHTML;
+            console.log('Content saved:', content);
+            alert("Content saved!");
+        }
+
+        // Function to reset the editor content
+        function resetContent() {
+            document.getElementById('editor').innerHTML = "<p>Start typing your blog content here...</p>";
+        }
+        
+    // Responsive menu toggle
+    const menu = document.querySelector('.menu');
+    const logo = document.querySelector('.logo');
+
+    logo.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+
+
+    </script>
+</body>
+</html>
